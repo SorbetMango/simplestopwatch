@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_countdown"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    android:soundEffectsEnabled="true"
+    tools:context=".Countdown">
+
+    <LinearLayout
+        android:id="@+id/main_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/controlBar"
+        android:orientation="vertical">
+
+        <omegacentauri.mobi.simplestopwatch.BigTextView
+            android:id="@+id/chrono"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="0sp"
+            android:textSize="50sp"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/controlBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/start"
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/oval"
+            android:onClick="onButtonStart"
+            android:text="Start"
+            android:textColor="@android:color/white"
+            android:hapticFeedbackEnabled="true"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/set_time"
+            android:layout_width="0sp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/oval"
+            android:onClick="onButtonSet"
+            android:text="Set"
+            android:textColor="@android:color/white"
+            android:hapticFeedbackEnabled="true"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/fraction"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.85"
+            android:maxLines="1"
+            android:gravity="center"
+            android:text=".0"
+            android:textColor="#FFFFFF"
+            android:textSize="32sp" />
+
+        <ImageButton
+            android:id="@+id/settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="6dp"
+            android:background="@null"
+            android:onClick="onButtonSettings"
+            android:hapticFeedbackEnabled="true"
+            android:src="@drawable/settings" />
+
+        <ImageButton
+            android:id="@+id/menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:onClick="onButtonMenu"
+            android:hapticFeedbackEnabled="true"
+            android:src="@drawable/menu" />
+
+    </LinearLayout>
+
+</RelativeLayout>
