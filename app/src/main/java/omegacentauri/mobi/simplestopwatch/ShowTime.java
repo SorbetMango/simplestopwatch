@@ -77,18 +77,18 @@ abstract public class ShowTime extends Activity {
         Class activityCircle[];
         if (options.getBoolean(Options.PREF_CLOCK_LITTLE_SECONDS, true)) {
             if (options.getBoolean(Options.PREF_CLOCK_BIG_SECONDS, true)) {
-                activityCircle = new Class[] { StopWatch.class, Clock.class, ClockWithSeconds.class };
+                activityCircle = new Class[] { StopWatch.class, Clock.class, ClockWithSeconds.class, Countdown.class };
             }
             else {
-                activityCircle = new Class[] { StopWatch.class, Clock.class };
+                activityCircle = new Class[] { StopWatch.class, Clock.class, Countdown.class };
             }
         }
         else {
             if (options.getBoolean(Options.PREF_CLOCK_BIG_SECONDS, true)) {
-                activityCircle = new Class[] { StopWatch.class, ClockWithSeconds.class };
+                activityCircle = new Class[] { StopWatch.class, ClockWithSeconds.class, Countdown.class };
             }
             else {
-                activityCircle = new Class[] { StopWatch.class };
+                activityCircle = new Class[] { StopWatch.class, Countdown.class };
             }
         }
         return activityCircle;
@@ -643,10 +643,9 @@ abstract public class ShowTime extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.go_settings:
-                onButtonSettings(null);
-                return true;
+        if (item.getItemId() == R.id.go_settings) {
+            onButtonSettings(null);
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }

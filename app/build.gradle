@@ -1,11 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 31
-    archivesBaseName = "GiantStopwatch"
+    namespace "omegacentauri.mobi.simplestopwatch"
+    compileSdk 34
+
     defaultConfig {
         applicationId "omegacentauri.mobi.simplestopwatch"
-        minSdkVersion 4
+        minSdkVersion 21
         //noinspection EditedTargetSdkVersion
         targetSdkVersion 37
         versionCode 1054
@@ -27,3 +28,8 @@ dependencies {
 //    androidTestImplementation 'com.android.support.test:runner:1.0.1'
 //    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
+
+base {
+    archivesName = "GiantStopwatch"
+}
+

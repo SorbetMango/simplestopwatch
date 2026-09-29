@@ -1,6 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/clock" android:title="Clock"   />
     <item android:id="@+id/stopwatch" android:title="Stopwatch"   />
+    <item android:id="@+id/countdown" android:title="Countdown"   />
     <item android:id="@+id/go_settings" android:title="Settings"   />
     <item android:id="@+id/fullscreen" android:title="Toggle fullscreen"   />
 </menu>

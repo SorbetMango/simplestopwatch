@@ -26,6 +26,9 @@
         <activity android:name=".Clock"
             >
         </activity>
+        <activity android:name=".Countdown"
+            >
+        </activity>
         <activity android:name=".ClockWithSeconds"
             >
         </activity>

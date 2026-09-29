@@ -425,50 +425,52 @@ public class StopWatch extends ShowTime {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         debug("options menu "+item.getItemId());
-        switch (item.getItemId()) {
-            case R.id.copy_time:
-                chrono.copyToClipboard();
-                return true;
-            case R.id.copy_laps:
-                chrono.copyLapsToClipboard();
-                return true;
-            case R.id.clear_laps:
-                chrono.clearLapData();
-                return true;
-            case R.id.pace:
-                pace();
-                return true;
-            case R.id.clock:
-                switchActivity(Clock.class, NONE);
-                return true;
-            case R.id.clock_with_seconds:
-                switchActivity(ClockWithSeconds.class, NONE);
-                return true;
-
-            case R.id.lock_mode:
-                noTouch = true;
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-                    invalidateOptionsMenu();
-                }
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && options.getBoolean(Options.PREF_PIN_ON_LOCK, true)) {
-                    startLockTask();
-                }
-                updateButtons();
-                lockModeWarn();
-                return true;
-            case R.id.unlock_mode:
-                noTouch = false;
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-                    invalidateOptionsMenu();
-                }
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && options.getBoolean(Options.PREF_PIN_ON_LOCK, true)) {
-                    stopLockTask();
-                }
-                updateButtons();
-                return true;
-            case R.id.fullscreen:
-                toggleFullscreen();
-                return true;
+        int itemId = item.getItemId();
+        if (itemId == R.id.copy_time) {
+            chrono.copyToClipboard();
+            return true;
+        } else if (itemId == R.id.copy_laps) {
+            chrono.copyLapsToClipboard();
+            return true;
+        } else if (itemId == R.id.clear_laps) {
+            chrono.clearLapData();
+            return true;
+        } else if (itemId == R.id.pace) {
+            pace();
+            return true;
+        } else if (itemId == R.id.clock) {
+            switchActivity(Clock.class, NONE);
+            return true;
+        } else if (itemId == R.id.clock_with_seconds) {
+            switchActivity(ClockWithSeconds.class, NONE);
+            return true;
+        } else if (itemId == R.id.countdown) {
+            switchActivity(Countdown.class, NONE);
+            return true;
+        } else if (itemId == R.id.lock_mode) {
+            noTouch = true;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+                invalidateOptionsMenu();
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && options.getBoolean(Options.PREF_PIN_ON_LOCK, true)) {
+                startLockTask();
+            }
+            updateButtons();
+            lockModeWarn();
+            return true;
+        } else if (itemId == R.id.unlock_mode) {
+            noTouch = false;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+                invalidateOptionsMenu();
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && options.getBoolean(Options.PREF_PIN_ON_LOCK, true)) {
+                stopLockTask();
+            }
+            updateButtons();
+            return true;
+        } else if (itemId == R.id.fullscreen) {
+            toggleFullscreen();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }

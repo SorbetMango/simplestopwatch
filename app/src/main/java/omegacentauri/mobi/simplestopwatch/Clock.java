@@ -115,22 +115,25 @@ public class Clock extends ShowTime {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         debug("options menu "+item.getItemId());
-        switch (item.getItemId()) {
-            case R.id.copy_time:
-                chrono.copyToClipboard();
-                return true;
-            case R.id.stopwatch:
-                switchActivity(StopWatch.class, NONE);
-                return true;
-            case R.id.clock:
-                switchActivity(Clock.class, NONE);
-                return true;
-            case R.id.clock_with_seconds:
-                switchActivity(ClockWithSeconds.class, NONE);
-                return true;
-            case R.id.fullscreen:
-                toggleFullscreen();
-                return true;
+        int itemId = item.getItemId();
+        if (itemId == R.id.copy_time) {
+            chrono.copyToClipboard();
+            return true;
+        } else if (itemId == R.id.stopwatch) {
+            switchActivity(StopWatch.class, NONE);
+            return true;
+        } else if (itemId == R.id.clock) {
+            switchActivity(Clock.class, NONE);
+            return true;
+        } else if (itemId == R.id.clock_with_seconds) {
+            switchActivity(ClockWithSeconds.class, NONE);
+            return true;
+        } else if (itemId == R.id.countdown) {
+            switchActivity(Countdown.class, NONE);
+            return true;
+        } else if (itemId == R.id.fullscreen) {
+            toggleFullscreen();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
