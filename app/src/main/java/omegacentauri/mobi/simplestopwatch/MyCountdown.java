@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -52,6 +53,7 @@ public class MyCountdown implements MyTimeKeeper {
         countdownTime = ms;
         active = false;
         paused = false;
+        stopUpdating();
         save();
         updateViews();
     }
@@ -82,6 +84,7 @@ public class MyCountdown implements MyTimeKeeper {
             if (active && !paused) {
                 paused = true;
                 pauseTime = SystemClock.elapsedRealtime();
+                stopUpdating();
                 save();
             }
         }
@@ -159,6 +162,8 @@ public class MyCountdown implements MyTimeKeeper {
 
         if (active && !paused) {
             startUpdating();
+        } else {
+            stopUpdating();
         }
         updateViews();
     }
@@ -169,6 +174,7 @@ public class MyCountdown implements MyTimeKeeper {
             timer.cancel();
             timer = null;
         }
+        context.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
 
     public void startUpdating() {
@@ -186,6 +192,10 @@ public class MyCountdown implements MyTimeKeeper {
                 }
             }, 0, 50);
         }
+        if (options.getBoolean(Options.PREF_SCREEN_ON, true))
+            context.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        else
+            context.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
 
     @Override
